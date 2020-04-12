@@ -16,12 +16,12 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
-  const fruitData = req.body;
-  db('fruits').insert(fruitData)
+  const carData = req.body;
+  db('cars').insert(carData)
   .then(ids => {
-    db('fruits').where({ id: ids[0] })
-    .then(newFruitEntry => {
-      res.status(201).json(newFruitEntry);
+    db('cars').where({ id: ids[0] })
+    .then(newCarEntry => {
+      res.status(201).json(newCarEntry);
     });
   })
   .catch (err => {
@@ -34,7 +34,7 @@ router.put('/:id', (req, res) => {
     const {id} = req.params;
     const changes = req.body;
 
-    db('fruits')
+    db('cars')
     .where({id})
     .update(changes)
     .then(count => {
@@ -51,7 +51,7 @@ router.delete('/:id', (req, res) => {
     const {id} = req.params;
     const changes = req.body;
 
-    db('fruits')
+    db('cars')
     .where({id})
     .del()
     .then(count => {
