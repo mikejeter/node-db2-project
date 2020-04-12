@@ -6,6 +6,8 @@ exports.up = function(knex) {
         tbl.text('make').notNullable();
         tbl.text('model').notNullable();
         tbl.decimal('mileage');
+        tbl.text('transmission');
+        tbl.text('title');
     });
 };
 
